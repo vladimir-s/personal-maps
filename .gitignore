@@ -1,4 +1,4 @@
 .idea/
-assets/
-protected/runtime/
-themes/classic/views/
+public_html/assets/
+public_html/protected/runtime/
+public_html/themes/classic/views/
