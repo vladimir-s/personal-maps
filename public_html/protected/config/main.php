@@ -43,21 +43,21 @@ return array(
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',
         ),
-		// uncomment the following to enable URLs in path-format
-		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                // REST patterns
+                array('<controller>/list', 'pattern'=>'api/<controller:\w+>', 'verb'=>'GET'),
+                array('<controller>/view', 'pattern'=>'api/<controller:\w+>/<id:\d+>', 'verb'=>'GET'),
+                array('<controller>/update', 'pattern'=>'api/<controller:\w+>/<id:\d+>', 'verb'=>'PUT'),
+                array('<controller>/delete', 'pattern'=>'api/<controller:\w+>/<id:\d+>', 'verb'=>'DELETE'),
+                array('<controller>/create', 'pattern'=>'api/<controller:\w+>', 'verb'=>'POST'),
 			),
+            'showScriptName'=>false,
 		),
-		*/
-//		'db'=>array(
-//			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-//		),
-		// uncomment the following to use a MySQL database
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=personalmaps',
 			'emulatePrepare' => true,
