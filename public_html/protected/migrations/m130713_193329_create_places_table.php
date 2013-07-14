@@ -11,10 +11,13 @@ class m130713_193329_create_places_table extends CDbMigration
             'p_coords' => 'string NOT NULL',
             'p_user_id' => 'integer NOT NULL',
         ));
+
+        $this->addForeignKey('user_id', 'pm_places', 'p_user_id', 'pm_users', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function down()
 	{
+        $this->dropForeignKey('user_id', 'pm_places');
         $this->dropTable('pm_users');
 	}
 }
