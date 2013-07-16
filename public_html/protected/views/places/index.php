@@ -10,11 +10,13 @@ require.config({
 	}
     });
 
-    require(["angular", "app"],
+    require(["angular", "app", "controllers/places"],
         function() {
             angular.bootstrap(document, ["personalmaps"]);
         }
     );
 ', CClientScript::POS_END);
 ?>
-<h1>Places</h1>
+<div ng-controller="PlacesController">
+{{ test }}
+</div>

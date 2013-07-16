@@ -7,7 +7,8 @@ class PlacesController extends RestController
 
     public function actionList()
     {
-        // TODO: Implement actionList() method.
+        $places = Places::model()->findAll();
+        echo CJSON::encode($places);
     }
 
     public function actionView()
