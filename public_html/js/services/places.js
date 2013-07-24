@@ -1,5 +1,7 @@
-define(['app'], function(app) {
-    app.factory('Places', ['$http', '$rootScope', function($http, $rootScope) {
+'use strict';
+
+angular.module('personalmaps.services', [])
+    .factory('Places', ['$http', '$rootScope', function($http, $rootScope) {
 
         var places = [];
 
@@ -35,5 +37,4 @@ define(['app'], function(app) {
         }
 
         return service;
-    }]);
-});
+}]);

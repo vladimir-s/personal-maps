@@ -1,5 +1,3 @@
 'use strict';
 
-define(['angular'], function (angular) {
-    return angular.module('personalmaps', []);
-});
+angular.module('personalmaps', ['personalmaps.services', 'personalmaps.controllers']);
