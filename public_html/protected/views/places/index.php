@@ -23,13 +23,14 @@ Yii::app()->clientScript->registerScript(
 
     <form name="place" novalidate>
 
-        <label>Title:<br><input type="text" ng-model="place.p_title"></label>
+        <label>Title *:<br><input type="text" ng-model="place.p_title" name="pTitle" required>
+        <span class="text-error" ng-show="place.$dirty && place.pTitle.$error.required">This field shouldn't be empty.</span></label>
 
         <label>Description:<br><textarea ng-model="place.p_description"></textarea></label>
 
         <label>Coordinates:<br><input type="text" ng-model="place.p_coords"></label>
 
-        <button type="submit" ng-click="save()" class="btn btn-primary">{{ mode }}</button>
+        <button type="submit" ng-disabled="place.$invalid" ng-click="save()" class="btn btn-primary">{{ mode }}</button>
         <button type="reset" ng-click="clear()" class="btn">Reset</button>
 
     </form>
