@@ -71,5 +71,14 @@ angular.module('personalmaps.services', [])
                 });
         }
 
+        service.save = function(place) {
+            if (undefined !== place.id && parseInt(place.id) > 0) {
+                service.update(place);
+            }
+            else {
+                service.add(place);
+            }
+        }
+
         return service;
 }]);

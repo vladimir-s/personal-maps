@@ -39,6 +39,7 @@ describe('Places service', function() {
             $httpBackend.when('GET', 'api/places').respond(response);
             $httpBackend.when('POST', 'api/places').respond(newPlace);
             $httpBackend.when('PUT', 'api/places/2').respond(response[1]);
+            $httpBackend.when('PUT', 'api/places/5').respond(response[1]);
             $httpBackend.when('DELETE', 'api/places/2').respond('');
         });
     });
@@ -110,5 +111,26 @@ describe('Places service', function() {
         places.delete(secondPlace);
         $httpBackend.flush();
         expect(places.get(2)).toEqual(null);
+    });
+
+    it('should add places without id', function() {
+        var places = injector.get('Places');
+        $httpBackend.flush();
+        $httpBackend.expectPOST('api/places');
+        places.save({
+            'p_title': 'some title'
+        });
+        $httpBackend.flush();
+    });
+
+    it('should update places with id', function() {
+        var places = injector.get('Places');
+        $httpBackend.flush();
+        $httpBackend.expectPUT('api/places/5');
+        places.save({
+            'id': 5,
+            'p_title': 'some title'
+        });
+        $httpBackend.flush();
     });
 });
