@@ -1,8 +1,4 @@
 describe('Places service', function() {
-    it('simply running', function() {
-        expect(true).toBe(true);
-    });
-
     var $httpBackend, injector;
 
     var response = [
