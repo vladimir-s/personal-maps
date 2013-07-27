@@ -1,0 +1,16 @@
+<div id="placesList">
+
+    <ul>
+        <li ng-repeat="place in places">
+            {{ place.p_title }}
+            <a href="#" ng-click="delete(place)" class="pull-right"><i class="icon-remove"></i></a>
+            <a href="#/edit/{{place.id}}" class="pull-right"><i class="icon-edit"></i></a>
+        </li>
+    </ul>
+
+    <span ng-show="isEmpty()">No places</span>
+
+    <div>
+        <a href="#/add" class="btn btn-success">Add place</a>
+    </div>
+</div>

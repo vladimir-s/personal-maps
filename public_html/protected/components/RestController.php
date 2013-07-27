@@ -26,7 +26,7 @@ abstract class RestController extends Controller
 
     abstract public function actionDelete();
 
-    private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
+    protected function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
     {
         // set the status
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
@@ -90,7 +90,7 @@ abstract class RestController extends Controller
         Yii::app()->end();
     }
 
-    private function _getStatusCodeMessage($status)
+    protected function _getStatusCodeMessage($status)
     {
         // these could be stored in a .ini file and loaded
         // via parse_ini_file()... however, this will suffice
