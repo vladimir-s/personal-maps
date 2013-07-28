@@ -36,7 +36,7 @@ app.factory('Places', ['$http', '$rootScope', function($http, $rootScope) {
     service.add = function(place) {
         $http({method: 'POST', url: 'api/places', data: place})
             .success(function(data, status, headers, config) {
-                places.push(place);
+                places.push(data);
                 $rootScope.$broadcast('places:added');
             })
             .error(function(data, status, headers, config) {

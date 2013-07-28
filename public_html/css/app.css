@@ -2,6 +2,9 @@ body {
   padding-top: 50px;
   padding-bottom: 30px;
 }
+.map img {
+  max-width: none;
+}
 footer {
   background-color: #e5e5e5;
   border-top: solid 1px #cccccc;

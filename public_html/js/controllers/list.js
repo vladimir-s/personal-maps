@@ -17,4 +17,8 @@ app.controller('PlacesListController', ['$scope', '$rootScope', 'Places', functi
     $scope.delete = function(place) {
         Places.delete(place);
     }
+
+    $scope.show = function(place) {
+        $rootScope.$broadcast('place:show', place);
+    }
 }]);

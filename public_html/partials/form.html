@@ -8,7 +8,17 @@
 
     <label>Description:<br><textarea ng-model="place.p_description" class="span12"></textarea></label>
 
-    <label>Coordinates:<br><input type="text" ng-model="place.p_coords" class="span12"></label>
+    <label for="placeLat">Latitude:</label>
+    <div class="input-append">
+        <input type="text" id="placeLat" ng-model="place.p_lat">
+        <span class="add-on">&deg;</span>
+    </div>
+
+    <label for="placeLng">Longitude:</label>
+    <div class="input-append" class="span12">
+        <input type="text" id="placeLng" ng-model="place.p_lng">
+        <span class="add-on">&deg;</span>
+    </div>
 
     <button type="submit" ng-disabled="placeForm.$invalid" ng-click="save()" class="btn btn-primary" ng-show="isNew">Create</button>
     <button type="submit" ng-disabled="placeForm.$invalid" ng-click="save()" class="btn btn-primary" ng-hide="isNew">Update</button>
