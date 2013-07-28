@@ -23,10 +23,15 @@ class PlacesController extends RestController
         $place = new Places();
         $place->p_title = $data['p_title'];
         $place->p_description = $data['p_description'];
-        $place->p_coords = $data['p_coords'];
+        $place->p_lng = $data['p_lng'];
+        $place->p_lat = $data['p_lat'];
         $place->p_user_id = 1;
-        $place->save();
-        $this->_sendResponse(200, CJSON::encode($place));
+        if ($place->save()) {
+            $this->_sendResponse(200, CJSON::encode($place));
+        }
+        else {
+            $this->_sendResponse(500, CJSON::encode(array('message'=>'Could not save place')));
+        }
     }
 
     public function actionUpdate()

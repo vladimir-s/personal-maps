@@ -8,7 +8,8 @@ class m130713_193329_create_places_table extends CDbMigration
             'id' => 'pk',
             'p_title' => 'string NOT NULL',
             'p_description' => 'string NOT NULL',
-            'p_coords' => 'string NOT NULL',
+            'p_lng' => 'float NOT NULL',
+            'p_lat' => 'float NOT NULL',
             'p_user_id' => 'integer NOT NULL',
         ));
 

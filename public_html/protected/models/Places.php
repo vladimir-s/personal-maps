@@ -7,7 +7,8 @@
  * @property integer $id
  * @property string $p_title
  * @property string $p_description
- * @property string $p_coords
+ * @property float $p_lat
+ * @property float $p_lng
  * @property integer $p_user_id
  *
  * The followings are the available model relations:
@@ -41,9 +42,11 @@ class Places extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('p_title, p_description, p_coords, p_user_id', 'required'),
+			array('p_title, p_description, p_lat, p_lng, p_user_id', 'required'),
 			array('p_user_id', 'numerical', 'integerOnly'=>true),
-			array('p_title, p_description, p_coords', 'length', 'max'=>255),
+			array('p_title', 'length', 'max'=>255),
+			array('p_lng, p_lat', 'numerical', 'max'=>180, 'min'=>-180),
+			array('p_description', 'length', 'max'=>1024),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, p_title, p_description, p_coords, p_user_id', 'safe', 'on'=>'search'),
