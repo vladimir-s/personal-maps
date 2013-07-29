@@ -1,5 +1,6 @@
 <?php
 Yii::app()->clientScript->registerScriptFile('//maps.googleapis.com/maps/api/js?sensor=false', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile('js/markdown.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('js/angular.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('js/ui-bootstrap-tpls-0.4.0.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('js/app.js', CClientScript::POS_END);
