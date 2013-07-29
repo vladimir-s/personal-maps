@@ -37,20 +37,20 @@ app.factory('Places', ['$http', '$rootScope', function($http, $rootScope) {
         $http({method: 'POST', url: 'api/places', data: place})
             .success(function(data, status, headers, config) {
                 places.push(data);
-                $rootScope.$broadcast('places:added');
+                $rootScope.$broadcast('place:added', data);
             })
             .error(function(data, status, headers, config) {
-                console.log(data);
+                $rootScope.$broadcast('place:error', data);
             });
     }
 
     service.update = function(place) {
-        $http({method: 'PUT', url: 'api/places/' + place.id})
+        $http({method: 'PUT', url: 'api/places/' + place.id, data: place})
             .success(function(data, status, headers, config) {
-                $rootScope.$broadcast('places:updated');
+                $rootScope.$broadcast('place:updated', data);
             })
             .error(function(data, status, headers, config) {
-                console.log(data);
+                $rootScope.$broadcast('place:error', data);
             });
     }
 
@@ -63,10 +63,10 @@ app.factory('Places', ['$http', '$rootScope', function($http, $rootScope) {
                         return false;
                     }
                 });
-                $rootScope.$broadcast('places:deleted');
+                $rootScope.$broadcast('place:deleted', data);
             })
             .error(function(data, status, headers, config) {
-                console.log(data);
+                $rootScope.$broadcast('place:error', data);
             });
     }
 

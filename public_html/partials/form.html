@@ -10,18 +10,30 @@
 
     <label for="placeLat">Latitude:</label>
     <div class="input-append">
-        <input type="text" id="placeLat" ng-model="place.p_lat">
+        <input type="text" id="placeLat" ng-model="place.p_lat" placeholder="Click on the map" disabled>
         <span class="add-on">&deg;</span>
     </div>
 
     <label for="placeLng">Longitude:</label>
     <div class="input-append" class="span12">
-        <input type="text" id="placeLng" ng-model="place.p_lng">
+        <input type="text" id="placeLng" ng-model="place.p_lng" placeholder="Click on the map" disabled>
         <span class="add-on">&deg;</span>
     </div>
 
-    <button type="submit" ng-disabled="placeForm.$invalid" ng-click="save()" class="btn btn-primary" ng-show="isNew">Create</button>
-    <button type="submit" ng-disabled="placeForm.$invalid" ng-click="save()" class="btn btn-primary" ng-hide="isNew">Update</button>
+    <div class="alert alert-error" ng-show="showErrors">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>Errors:</h4>
+        <ul>
+            <li ng-repeat="error in errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <button type="submit" ng-disabled="placeForm.$invalid || saving" ng-click="save()" class="btn btn-primary">
+        <span ng-show="isNew">Create</span>
+        <span ng-hide="isNew">Update</span>
+        <span ng-show="saving"><img ng-src="images/ajax-loader.gif" alt="loader"></span>
+    </button>
+
     <a href="#/list" class="btn">Cancel</a>
 
 </form>
