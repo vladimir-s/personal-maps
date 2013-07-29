@@ -25,6 +25,16 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
                 initialize();
             }
 
+            function setMarkerOnClickEvent(marker) {
+                google.maps.event.addListener(marker, 'click', function(event) {
+                    var place = Places.get(marker.pid);
+                    var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
+                    infoBox.setContent('<h4>' + place.p_title + '</h4>' + '<p>' + place.p_description + '</p>');
+                    infoBox.setPosition(latlng);
+                    infoBox.open(map);
+                });
+            }
+
             var markers = [];
             var infoBox = new google.maps.InfoWindow();
 
@@ -35,12 +45,14 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
                 angular.forEach(Places.getAll(), function(place) {
                     var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
                     bounds.extend(latlng);
-                    markers.push(new google.maps.Marker({
+                    var marker = new google.maps.Marker({
                         position: latlng,
                         map: map,
                         title: place.p_title,
                         pid: place.id
-                    }));
+                    });
+                    setMarkerOnClickEvent(marker);
+                    markers.push(marker);
                 });
                 map.fitBounds(bounds);
             });
@@ -63,12 +75,14 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
 
             $rootScope.$on('place:added', function(event, place) {
                 var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
-                markers.push(new google.maps.Marker({
+                var marker = new google.maps.Marker({
                     position: latlng,
                     map: map,
                     title: place.p_title,
                     pid: place.id
-                }));
+                });
+                setMarkerOnClickEvent(marker);
+                markers.push(marker);
                 infoBox.setContent('<h4>' + place.p_title + '</h4>' + '<p>' + place.p_description + '</p>');
                 infoBox.setPosition(latlng);
                 infoBox.open(map);
@@ -95,9 +109,11 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
             });
 
             google.maps.event.addListener(map, 'click', function(event) {
-                $rootScope.$broadcast('map:pointSelected', {
-                    p_lat: Math.round(event.latLng.lat() * 100) / 100,
-                    p_lng: Math.round(event.latLng.lng() * 100) / 100
+                scope.$apply(function() {
+                    $rootScope.$broadcast('map:pointSelected', {
+                        p_lat: Math.round(event.latLng.lat() * 100) / 100,
+                        p_lng: Math.round(event.latLng.lng() * 100) / 100
+                    });
                 });
             });
         }

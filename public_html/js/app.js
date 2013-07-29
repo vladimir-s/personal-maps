@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('personalmaps', [])
+var app = angular.module('personalmaps', ['ui.bootstrap'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/list', {
             templateUrl: 'partials/list.html',

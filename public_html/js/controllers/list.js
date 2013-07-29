@@ -1,6 +1,9 @@
 'use strict';
 
-app.controller('PlacesListController', ['$scope', '$rootScope', 'Places', function($scope, $rootScope, Places) {
+app.controller('PlacesListController'
+    , ['$scope', '$rootScope', 'Places', '$dialog'
+    , function($scope, $rootScope, Places, $dialog) {
+
     $scope.places = Places.getAll();
 
     $rootScope.$on('places:updated', function() {
@@ -12,6 +15,20 @@ app.controller('PlacesListController', ['$scope', '$rootScope', 'Places', functi
             return true;
         }
         return false;
+    }
+
+    $scope.confirm = function(place) {
+        var title = 'Confirm';
+        var msg = 'Do you really want to delete this place?';
+        var btns = [{result:'no', label: 'No'}, {result:'yes', label: 'Yes', cssClass: 'btn-primary'}];
+
+        $dialog.messageBox(title, msg, btns)
+            .open()
+            .then(function(result){
+                if (result === 'yes') {
+                    $scope.delete(place);
+                }
+            });
     }
 
     $scope.delete = function(place) {
