@@ -18,13 +18,13 @@ abstract class RestController extends Controller
     // Actions
     abstract public function actionList();
 
-    abstract public function actionView();
+    abstract public function actionView($id);
 
     abstract public function actionCreate();
 
-    abstract public function actionUpdate();
+    abstract public function actionUpdate($id);
 
-    abstract public function actionDelete();
+    abstract public function actionDelete($id);
 
     protected function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
     {
