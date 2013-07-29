@@ -2,7 +2,6 @@
 class PlacesController extends RestController
 {
     public function actionIndex() {
-        $this->layout='/layouts/yiistrap';
         $this->render('index');
     }
 

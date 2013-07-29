@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 
 <p>Please fill out the following form with your login credentials:</p>
 
-<div class="form">
+<div class="form-horizontal">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -22,31 +22,31 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="muted">Fields with <span class="required">*</span> are required.</p>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'username', array('class'=>'control-label')); ?>
+        <div class="controls"><?php echo $form->textField($model,'username'); ?>
+		<?php echo $form->error($model,'username', array('class'=>'text-error')); ?></div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'password', array('class'=>'control-label')); ?>
+        <div class="controls"><?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->error($model,'password', array('class'=>'text-error')); ?>
+		<p class="muted">
+			Hint: You may login with <code>demo/demo</code> or <code>admin/admin</code>.
+		</p></div>
 	</div>
 
-	<div class="row rememberMe">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
+	<div class="control-group">
+        <div class="controls"><?php echo $form->checkBox($model,'rememberMe'); ?>
+        <?php echo $form->label($model,'rememberMe', array('class'=>'checkbox inline')); ?>
+		<?php echo $form->error($model,'rememberMe', array('class'=>'text-error')); ?></div>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+	<div class="control-group">
+        <div class="controls"><?php echo CHtml::submitButton('Login', array('class'=>'btn btn-success')); ?></div>
 	</div>
 
 <?php $this->endWidget(); ?>

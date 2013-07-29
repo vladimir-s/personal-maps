@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
 If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
 </p>
 
-<div class="form">
+<div class="form-horizontal">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'contact-form',
@@ -33,49 +33,49 @@ If you have business inquiries or other questions, please fill out the following
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="muted">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'name', array('class'=>'control-label')); ?>
+		<div class="controls"><?php echo $form->textField($model,'name'); ?>
+		<?php echo $form->error($model,'name', array('class'=>'text-error')); ?></div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'email', array('class'=>'control-label')); ?>
+        <div class="controls"><?php echo $form->textField($model,'email'); ?>
+		<?php echo $form->error($model,'email', array('class'=>'text-error')); ?></div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'subject'); ?>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'subject', array('class'=>'control-label')); ?>
+        <div class="controls"><?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($model,'subject', array('class'=>'text-error')); ?></div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'body'); ?>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'body', array('class'=>'control-label')); ?>
+        <div class="controls"><?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'body', array('class'=>'text-error')); ?></div>
 	</div>
 
 	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
+	<div class="control-group">
+		<?php echo $form->labelEx($model,'verifyCode', array('class'=>'control-label')); ?>
+		<div class="controls">
 		<?php $this->widget('CCaptcha'); ?>
 		<?php echo $form->textField($model,'verifyCode'); ?>
-		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
+        <?php echo $form->error($model,'verifyCode', array('class'=>'text-error')); ?>
+        </div>
+        <div class="muted controls">Please enter the letters as they are shown in the image above.
+            <br/>Letters are not case-sensitive.</div>
 	</div>
 	<?php endif; ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+	<div class="control-group">
+        <div class="controls"><?php echo CHtml::submitButton('Submit', array('class'=>'btn btn-success')); ?></div>
 	</div>
 
 <?php $this->endWidget(); ?>

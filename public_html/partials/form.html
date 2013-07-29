@@ -1,12 +1,14 @@
 <form name="placeForm" novalidate>
 
-    <div ng-show="isNew">Create place</div>
-    <div ng-hide="isNew">Update place</div>
+    <h4 ng-show="isNew">Create place</h4>
+    <h4 ng-hide="isNew">Update place</h4>
 
     <label>Title *:<br><input type="text" ng-model="place.p_title" name="pTitle" required class="span12">
     <span class="text-error" ng-show="placeForm.$dirty && placeForm.pTitle.$error.required">This field shouldn't be empty.</span></label>
 
-    <label>Description:<br><textarea ng-model="place.p_description" class="span12"></textarea></label>
+    <label>Description (<a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a> enabled):<br>
+        <textarea ng-model="place.p_description" class="span12"></textarea>
+    </label>
 
     <label for="placeLat">Latitude:</label>
     <div class="input-append">

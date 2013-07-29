@@ -12,6 +12,10 @@ body {
 #placesList ul li {
   padding: 0 0 10px 0;
 }
+#contact-form .text-error,
+#login-form .text-error {
+  display: inline;
+}
 footer {
   background-color: #e5e5e5;
   border-top: solid 1px #cccccc;
