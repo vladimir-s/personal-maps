@@ -23,7 +23,7 @@ return array(
         'bootstrap.helpers.TbHtml',
 	),
 
-//    'theme'=>'bootstrap',
+    'homeUrl'=>array('site/login'),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
