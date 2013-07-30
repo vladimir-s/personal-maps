@@ -42,15 +42,14 @@ class Places extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('p_title, p_lat, p_lng, p_user_id', 'required'),
-			array('p_user_id', 'numerical', 'integerOnly'=>true),
+			array('p_title, p_lat, p_lng', 'required'),
 			array('p_title', 'length', 'max'=>255),
 			array('p_lng', 'numerical', 'max'=>180, 'min'=>-180),
 			array('p_lat', 'numerical', 'max'=>90, 'min'=>-90),
 			array('p_description', 'length', 'max'=>1024),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, p_title, p_description, p_coords, p_user_id', 'safe', 'on'=>'search'),
+			array('id, p_title, p_description, p_coords', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -102,4 +101,16 @@ class Places extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function defaultScope()
+    {
+        return array(
+            'condition'=>"p_user_id=".Yii::app()->user->getId(),
+        );
+    }
+
+    public function beforeSave() {
+        $this->p_user_id = Yii::app()->user->getId();
+        return parent::beforeSave();
+    }
 }
