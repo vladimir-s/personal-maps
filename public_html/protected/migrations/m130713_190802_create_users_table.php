@@ -9,7 +9,6 @@ class m130713_190802_create_users_table extends CDbMigration
             'u_name' => 'string NOT NULL',
             'u_email' => 'string NOT NULL',
             'u_pass' => 'string NOT NULL',
-            'u_role' => 'string NOT NULL',
         ));
 	}
 

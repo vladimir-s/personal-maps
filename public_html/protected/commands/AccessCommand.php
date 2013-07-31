@@ -4,18 +4,24 @@ class AccessCommand extends CConsoleCommand
     public function actionAddRules() {
         $auth=Yii::app()->authManager;
 
-        $auth->createOperation('addPlace','создание места');
-        $auth->createOperation('viewPlace','просмотр места');
-        $auth->createOperation('updatePlace','редактирование места');
-        $auth->createOperation('deletePlace','удаление места');
-        $auth->createOperation('viewPlaces','просмотр мест');
+        $auth->createOperation('addPlace','create place');
+        $auth->createOperation('viewPlace','view place');
+        $auth->createOperation('updatePlace','update place');
+        $auth->createOperation('deletePlace','delete place');
+        $auth->createOperation('viewPlaces','view places');
+
+        $auth->createOperation('addUser','create user');
+        $auth->createOperation('viewUser','view user');
+        $auth->createOperation('updateUser','update user');
+        $auth->createOperation('deleteUser','delete user');
+        $auth->createOperation('viewUsers','view users');
 
         $bizRule='return Yii::app()->user->id==$params["place"]->p_user_id;';
-        $task=$auth->createTask('viewOwnPlace','просмотр своего места',$bizRule);
+        $task=$auth->createTask('viewOwnPlace', 'view own place', $bizRule);
         $task->addChild('viewPlace');
-        $task=$auth->createTask('updateOwnPlace','редактирование своего места',$bizRule);
+        $task=$auth->createTask('updateOwnPlace', 'edit own place', $bizRule);
         $task->addChild('updatePlace');
-        $task=$auth->createTask('deleteOwnPlace','удаление своего места',$bizRule);
+        $task=$auth->createTask('deleteOwnPlace', 'delete own place', $bizRule);
         $task->addChild('deletePlace');
 
         $role=$auth->createRole('user');
@@ -24,33 +30,24 @@ class AccessCommand extends CConsoleCommand
         $role->addChild('updateOwnPlace');
         $role->addChild('deleteOwnPlace');
         $role->addChild('viewPlaces');
+
+        $role=$auth->createRole('admin');
+        $role->addChild('user');
+        $role->addChild('addUser');
+        $role->addChild('viewUser');
+        $role->addChild('updateUser');
+        $role->addChild('deleteUser');
+        $role->addChild('viewUsers');
     }
 
-    public function actionAddUsers() {
+    public function actionAddAdminUser() {
         $auth=Yii::app()->authManager;
 
-        $user1 = new Users();
-        $user1->u_name = 'user_1';
-        $user1->u_pass = crypt('111', UserIdentity::blowfishSalt());
-        $user1->u_email = 'user_1@site.loc';
-        $user1->u_role = 'user';
-        $user1->save();
-        $auth->assign('user', $user1->id);
-
-        $user2 = new Users();
-        $user2->u_name = 'user_2';
-        $user2->u_pass = crypt('222', UserIdentity::blowfishSalt());
-        $user2->u_email = 'user_2@site.loc';
-        $user2->u_role = 'user';
-        $user2->save();
-        $auth->assign('user', $user2->id);
-
-        $user3 = new Users();
-        $user3->u_name = 'user_3';
-        $user3->u_pass = crypt('333', UserIdentity::blowfishSalt());
-        $user3->u_email = 'user_3@site.loc';
-        $user3->u_role = 'user';
-        $user3->save();
-        $auth->assign('user', $user3->id);
+        $user = new Users();
+        $user->u_name = 'admin';
+        $user->u_pass = crypt('admin', UserIdentity::blowfishSalt());
+        $user->u_email = 'admin@site.loc';
+        $user->save();
+        $auth->assign('admin', $user->id);
     }
 }

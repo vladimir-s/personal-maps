@@ -8,13 +8,13 @@
  * @property string $u_name
  * @property string $u_email
  * @property string $u_pass
- * @property string $u_role
  *
  * The followings are the available model relations:
  * @property Places[] $places
  */
 class Users extends CActiveRecord
 {
+    public $u_pass_repeat;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -41,11 +41,12 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('u_name, u_email, u_pass, u_role', 'required'),
-			array('u_name, u_email, u_pass, u_role', 'length', 'max'=>255),
+			array('u_name, u_email, u_pass', 'required'),
+			array('u_name, u_email, u_pass', 'length', 'max'=>255),
+            array('u_pass_repeat', 'compare', 'on'=>'create'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, u_name, u_email, u_pass, u_role', 'safe', 'on'=>'search'),
+			array('id, u_name, u_email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,7 +72,7 @@ class Users extends CActiveRecord
 			'u_name' => 'Name',
 			'u_email' => 'Email',
 			'u_pass' => 'Password',
-			'u_role' => 'Role',
+            'u_pass_repeat' => 'Repeat password',
 		);
 	}
 
@@ -90,7 +91,6 @@ class Users extends CActiveRecord
 		$criteria->compare('u_name',$this->u_name,true);
 		$criteria->compare('u_email',$this->u_email,true);
 		$criteria->compare('u_pass',$this->u_pass,true);
-		$criteria->compare('u_role',$this->u_role,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
