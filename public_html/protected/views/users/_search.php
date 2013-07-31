@@ -17,8 +17,6 @@
 
                     <?php echo $form->textFieldControlGroup($model,'u_email',array('span'=>5,'maxlength'=>255)); ?>
 
-                    <?php echo $form->textFieldControlGroup($model,'u_pass',array('span'=>5,'maxlength'=>255)); ?>
-
         <div class="form-actions">
         <?php echo TbHtml::submitButton('Search',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
     </div>

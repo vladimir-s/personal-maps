@@ -23,9 +23,11 @@
 
             <?php echo $form->textFieldControlGroup($model,'u_email',array('span'=>5,'maxlength'=>255)); ?>
 
-            <?php echo $form->passwordFieldControlGroup($model,'u_pass',array('span'=>5,'maxlength'=>255)); ?>
+            <?php echo $form->passwordFieldControlGroup($model,'u_pass',array('span'=>5,'maxlength'=>255,'value'=>'')); ?>
 
-            <?php echo $form->passwordFieldControlGroup($model,'u_pass_repeat',array('span'=>5,'maxlength'=>255)); ?>
+            <?php echo $form->passwordFieldControlGroup($model,'u_pass_repeat',array('span'=>5,'maxlength'=>255,'value'=>'')); ?>
+
+            <?php echo $form->dropDownListControlGroup($model, 'u_role', array('user'=>'user', 'admin'=>'admin'), array('class' => 'span5')); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

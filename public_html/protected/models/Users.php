@@ -8,6 +8,7 @@
  * @property string $u_name
  * @property string $u_email
  * @property string $u_pass
+ * @property string $u_role
  *
  * The followings are the available model relations:
  * @property Places[] $places
@@ -41,9 +42,9 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('u_name, u_email, u_pass', 'required'),
+			array('u_name, u_email, u_pass, u_role', 'required'),
 			array('u_name, u_email, u_pass', 'length', 'max'=>255),
-            array('u_pass_repeat', 'compare', 'on'=>'create'),
+            array('u_pass_repeat', 'compare', 'compareAttribute'=>'u_pass', 'on'=>'create, update'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, u_name, u_email', 'safe', 'on'=>'search'),
@@ -73,6 +74,7 @@ class Users extends CActiveRecord
 			'u_email' => 'Email',
 			'u_pass' => 'Password',
             'u_pass_repeat' => 'Repeat password',
+            'u_role' => 'Role',
 		);
 	}
 
@@ -96,4 +98,14 @@ class Users extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function beforeSave() {
+        $this->u_pass = crypt($this->u_pass, UserIdentity::blowfishSalt());
+        return parent::beforeSave();
+    }
+
+    public function afterSave() {
+        Yii::app()->authManager->revoke($this->u_role, $this->id);
+        return parent::afterSave();
+    }
 }

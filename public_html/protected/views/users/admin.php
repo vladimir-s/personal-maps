@@ -9,8 +9,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-array('label'=>'List Users', 'url'=>array('index')),
-array('label'=>'Create Users', 'url'=>array('create')),
+    array('label'=>'Operations'),
+    array('label'=>'List Users', 'url'=>array('index')),
+    array('label'=>'Create Users', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -47,12 +48,11 @@ return false;
 'dataProvider'=>$model->search(),
 'filter'=>$model,
 'columns'=>array(
-		'id',
-		'u_name',
-		'u_email',
-		'u_pass',
-array(
-'class'=>'bootstrap.widgets.TbButtonColumn',
-),
+    'id',
+    'u_name',
+    'u_email',
+    array(
+        'class'=>'bootstrap.widgets.TbButtonColumn',
+    ),
 ),
 )); ?>

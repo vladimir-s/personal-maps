@@ -46,11 +46,11 @@ return array(
 			'urlFormat'=>'path',
 			'rules'=>array(
                 // REST patterns
-                array('<controller>/list', 'pattern'=>'api/<controller:\w+>', 'verb'=>'GET'),
-                array('<controller>/view', 'pattern'=>'api/<controller:\w+>/<id:\d+>', 'verb'=>'GET'),
-                array('<controller>/update', 'pattern'=>'api/<controller:\w+>/<id:\d+>', 'verb'=>'PUT'),
-                array('<controller>/delete', 'pattern'=>'api/<controller:\w+>/<id:\d+>', 'verb'=>'DELETE'),
-                array('<controller>/create', 'pattern'=>'api/<controller:\w+>', 'verb'=>'POST'),
+                array('places/list', 'pattern'=>'api/places', 'verb'=>'GET'),
+                array('places/view', 'pattern'=>'api/places/<id:\d+>', 'verb'=>'GET'),
+                array('places/update', 'pattern'=>'api/places/<id:\d+>', 'verb'=>'PUT'),
+                array('places/delete', 'pattern'=>'api/places/<id:\d+>', 'verb'=>'DELETE'),
+                array('places/create', 'pattern'=>'api/places', 'verb'=>'POST'),
                 // regular patterns
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
