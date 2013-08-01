@@ -105,7 +105,13 @@ class Users extends CActiveRecord
     }
 
     public function afterSave() {
-        Yii::app()->authManager->revoke($this->u_role, $this->id);
+        $assignments = Yii::app()->authManager->getAuthAssignments($this->id);
+        if (!empty($assignments)) {
+            foreach ($assignments as $key => $assignment) {
+                Yii::app()->authManager->revoke($key, $this->id);
+            }
+        }
+        Yii::app()->authManager->assign($this->u_role, $this->id);
         return parent::afterSave();
     }
 }

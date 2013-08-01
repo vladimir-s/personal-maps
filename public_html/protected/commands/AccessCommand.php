@@ -45,10 +45,9 @@ class AccessCommand extends CConsoleCommand
 
         $user = new Users();
         $user->u_name = 'admin';
-        $user->u_pass = crypt('admin', UserIdentity::blowfishSalt());
+        $user->u_pass = 'admin';
         $user->u_email = 'admin@site.loc';
         $user->u_role = 'admin';
         $user->save();
-//        $auth->assign('admin', $user->id);
     }
 }
