@@ -11,7 +11,6 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/directives
 Yii::app()->clientScript->registerScript(
     'requiredScript'
     , '
-    app.constant("baseUrl", "'.Yii::app()->baseUrl.'");
     angular.bootstrap(document, ["personalmaps"]);
     '
     , CClientScript::POS_END

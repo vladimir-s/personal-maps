@@ -27,7 +27,7 @@ describe('Places service', function() {
     };
 
     beforeEach(function() {
-        module('personalmaps.services');
+        module('personalmaps');
 
         inject(function($injector) {
             injector = $injector;

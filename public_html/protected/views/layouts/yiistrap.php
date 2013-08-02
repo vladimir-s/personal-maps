@@ -16,7 +16,7 @@
     <?php Yii::app()->bootstrap->register(); ?>
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/app.css" />
-
+    <base href="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>/">
 </head>
 <body>
 <!--[if lt IE 7]>

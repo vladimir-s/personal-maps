@@ -13,7 +13,7 @@ app.controller('PlacesFormController'
 
     if ($routeParams.placeId !== undefined) {
         $scope.place = Places.get($routeParams.placeId);
-        if (null === $scope.place) {
+        if (undefined === $scope.place || null === $scope.place) {
             //place with this id not found
             $location.path('/add').replace();
         }

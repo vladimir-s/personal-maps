@@ -19,22 +19,9 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
         $record = Users::model()->findByAttributes(array('u_name' => $this->username));
-//        var_dump($this->password);
-//        var_dump($record->u_pass);
-//        var_dump(crypt($this->password, $record->u_pass));
-
-//        var_dump($this->password);
-//        var_dump($record->u_pass);
-//        $crypted = crypt($this->password, UserIdentity::blowfishSalt());
-//        var_dump($crypted);
-//        var_dump(crypt($this->password, $crypted));
-
-//        exit;
         if ($record === null) {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
         } else if ($record->u_pass !== crypt($this->password, $record->u_pass)) {
-            var_dump($record->u_pass);
-            var_dump(crypt($this->password, $record->u_pass));
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
         } else {
             $this->_id = $record->id;

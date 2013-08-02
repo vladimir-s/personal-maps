@@ -12,6 +12,8 @@ files = [
   JASMINE_ADAPTER,
   '../../js/angular.js',
   'libs/angular-mocks.js',
+  '../../js/ui-bootstrap-tpls-0.4.0.min.js',
+  '../../js/app.js',
   '../../js/controllers/*.js',
   '../../js/services/*.js',
   'unit/js/controllers/*.spec.js',
