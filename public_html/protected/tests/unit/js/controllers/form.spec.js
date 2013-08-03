@@ -15,34 +15,6 @@ describe('Places Form controller', function() {
         });
     });
 
-//    it('should call getAll', function() {
-//        expect(places.getAll).toHaveBeenCalled();
-//    });
-//
-//    it('should call getAll on places:updated event', function() {
-//        rootScope.$emit('places:updated');
-//        expect(places.getAll.calls.length).toEqual(2);
-//    });
-//
-//    it('should set Create mode on reset', function() {
-//        scope.setCurrent({});
-//        scope.reset();
-//        expect(scope.mode).toEqual('Create');
-//    });
-//
-//    it('should set Update mode on setCurrent', function() {
-//        scope.reset();
-//        scope.setCurrent({});
-//        expect(scope.mode).toEqual('Update');
-//    });
-//
-//    it('should return true if empty', function() {
-//        scope.places = [];
-//        expect(scope.isEmpty()).toEqual(true);
-//        scope.places = [{}, {}];
-//        expect(scope.isEmpty()).toEqual(false);
-//    });
-
     it('should redirect to /edit/... on place:added', function() {
         controller('PlacesFormController', {$scope: scope, $rootScope: rootScope, 'Places': places, $routeParams: routeParams, $location: location});
         rootScope.$emit('place:added', {id: 3});

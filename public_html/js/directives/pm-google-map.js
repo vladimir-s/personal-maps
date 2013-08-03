@@ -8,7 +8,7 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
             }
             setMapHeight();
 
-            var map = null;
+            scope.map = null;
 
             function initialize() {
                 var defaults = {
@@ -19,9 +19,9 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
                     scaleControl: true,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
-                map = new google.maps.Map(element[0], defaults);
+                scope.map = new google.maps.Map(element[0], defaults);
             }
-            if (map === null) {
+            if (scope.map === null) {
                 initialize();
             }
 
@@ -35,15 +35,15 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
                     var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
                     infoBox.setContent(getDescription(place));
                     infoBox.setPosition(latlng);
-                    infoBox.open(map);
+                    infoBox.open(scope.map);
                 });
             }
 
-            var markers = [];
+            scope.markers = [];
             var infoBox = new google.maps.InfoWindow();
 
             $rootScope.$on('places:updated', function() {
-                markers = [];
+                scope.markers = [];
                 infoBox.close();
                 var bounds = new google.maps.LatLngBounds();
                 angular.forEach(Places.getAll(), function(place) {
@@ -51,27 +51,27 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
                     bounds.extend(latlng);
                     var marker = new google.maps.Marker({
                         position: latlng,
-                        map: map,
+                        map: scope.map,
                         title: place.p_title,
                         pid: place.id
                     });
                     setMarkerOnClickEvent(marker);
-                    markers.push(marker);
+                    scope.markers.push(marker);
                 });
-                map.fitBounds(bounds);
+                scope.map.fitBounds(bounds);
             });
 
             $rootScope.$on('place:updated', function(event, place) {
                 infoBox.close();
-                angular.forEach(markers, function(marker) {
+                angular.forEach(scope.markers, function(marker) {
                     if (marker.pid == place.id) {
                         var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
                         marker.setTitle(place.p_title);
                         marker.setPosition(latlng);
-                        map.setCenter(latlng);
+                        scope.map.setCenter(latlng);
                         infoBox.setContent(getDescription(place));
                         infoBox.setPosition(latlng);
-                        infoBox.open(map);
+                        infoBox.open(scope.map);
                         return false;
                     }
                 });
@@ -81,38 +81,38 @@ app.directive('pmGoogleMap', function factory($window, $rootScope, Places) {
                 var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
                 var marker = new google.maps.Marker({
                     position: latlng,
-                    map: map,
+                    map: scope.map,
                     title: place.p_title,
                     pid: place.id
                 });
                 setMarkerOnClickEvent(marker);
-                markers.push(marker);
+                scope.markers.push(marker);
                 infoBox.setContent(getDescription(place));
                 infoBox.setPosition(latlng);
-                infoBox.open(map);
-                map.setCenter(latlng);
+                infoBox.open(scope.map);
+                scope.map.setCenter(latlng);
             });
 
             $rootScope.$on('place:show', function(event, place) {
                 var latlng = new google.maps.LatLng(place.p_lat, place.p_lng);
                 infoBox.setContent(getDescription(place));
                 infoBox.setPosition(latlng);
-                infoBox.open(map);
-                map.setCenter(latlng);
+                infoBox.open(scope.map);
+                scope.map.setCenter(latlng);
             });
 
             $rootScope.$on('place:deleted', function(event, place) {
                 infoBox.close();
-                angular.forEach(markers, function(marker, i) {
+                angular.forEach(scope.markers, function(marker, i) {
                     if (marker.pid == place.id) {
                         marker.setMap(null);
-                        markers.splice(i, 1);
+                        scope.markers.splice(i, 1);
                         return false;
                     }
                 });
             });
 
-            google.maps.event.addListener(map, 'click', function(event) {
+            google.maps.event.addListener(scope.map, 'click', function(event) {
                 // $apply explanation http://jimhoskins.com/2012/12/17/angularjs-and-apply.html
                 scope.$apply(function() {
                     $rootScope.$broadcast('map:pointSelected', {

@@ -91,6 +91,14 @@ return array(
             'class'=>'CDbAuthManager',
             'connectionID'=>'db',
         ),
+        'clientScript'=>array(
+            'packages'=>array(
+                'jquery'=>array(
+                    'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/',
+                    'js'=>array('1.10.2/jquery.min.js'),
+                )
+            ),
+        ),
 	),
 
 	// application-level parameters that can be accessed
