@@ -15,10 +15,10 @@ describe('Places Form controller', function() {
         });
     });
 
-    it('should redirect to /edit/... on place:added', function() {
+    it('should redirect to /list on place:added', function() {
         controller('PlacesFormController', {$scope: scope, $rootScope: rootScope, 'Places': places, $routeParams: routeParams, $location: location});
         rootScope.$emit('place:added', {id: 3});
-        expect(location.path()).toBe('/edit/3');
+        expect(location.path()).toBe('/list');
     });
 
     it('should redirect to /add if place not found', function() {

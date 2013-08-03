@@ -2,8 +2,7 @@
 class PlacesController extends RestController
 {
     public function actionIndex() {
-        if (Yii::app()->user->checkAccess('user'))
-        {
+        if (Yii::app()->user->checkAccess('user')) {
             $this->render('index');
         }
         else {
@@ -13,8 +12,7 @@ class PlacesController extends RestController
 
     public function actionList()
     {
-        if (!Yii::app()->user->checkAccess('user'))
-        {
+        if (!Yii::app()->user->checkAccess('user')) {
             $this->_sendResponse(403);
             return;
         }
@@ -30,8 +28,7 @@ class PlacesController extends RestController
 
     public function actionCreate()
     {
-        if (!Yii::app()->user->checkAccess('user'))
-        {
+        if (!Yii::app()->user->checkAccess('user')) {
             $this->_sendResponse(403);
             return;
         }
@@ -56,8 +53,7 @@ class PlacesController extends RestController
     {
         $data = CJSON::decode(file_get_contents('php://input'));
         $place = Places::model()->findByPk($id);
-        if (!Yii::app()->user->checkAccess('user', array('place'=>$place)))
-        {
+        if (!Yii::app()->user->checkAccess('user', array('place'=>$place))) {
             $this->_sendResponse(403);
             return;
         }
@@ -86,8 +82,7 @@ class PlacesController extends RestController
             $this->_sendResponse(404, CJSON::encode(array('message'=>'Could not find place with id = '.$id)));
             return;
         }
-        if (!Yii::app()->user->checkAccess('user', array('place'=>$place)))
-        {
+        if (!Yii::app()->user->checkAccess('user', array('place'=>$place))) {
             $this->_sendResponse(403);
             return;
         }

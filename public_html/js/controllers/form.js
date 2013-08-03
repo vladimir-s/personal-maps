@@ -32,7 +32,7 @@ app.controller('PlacesFormController'
 
     $rootScope.$on('place:added', function(event, data) {
         $scope.saving = false;
-        $location.path('/edit/' + data.id).replace();
+        $location.path('/list').replace();
     });
 
     $rootScope.$on('place:error', function(event, data) {
