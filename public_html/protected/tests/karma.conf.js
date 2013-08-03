@@ -10,14 +10,19 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
+  '../../assets/cd2696b3/jquery.js',
+  'http://maps.googleapis.com/maps/api/js?sensor=false',
+  '../../js/markdown.js',
   '../../js/angular.js',
   'libs/angular-mocks.js',
   '../../js/ui-bootstrap-tpls-0.4.0.min.js',
   '../../js/app.js',
   '../../js/controllers/*.js',
   '../../js/services/*.js',
+  '../../js/directives/*.js',
   'unit/js/controllers/*.spec.js',
-  'unit/js/services/*.spec.js'
+  'unit/js/services/*.spec.js',
+  'unit/js/directives/*.spec.js'
 ];
 
 
