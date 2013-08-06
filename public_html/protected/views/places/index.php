@@ -6,10 +6,11 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/ui-bootstr
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/angular-translate.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScript(
     'langScript'
-    , 'var lang = "'.Yii::app()->getLanguage().'";'
+    , '
+    var lang = "'.Yii::app()->getLanguage().'";
+    var translations = '.CJSON::encode(Yii::app()->messages->getAllMessages('frontend', Yii::app()->getLanguage())).';'
     , CClientScript::POS_HEAD
 );
-
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/app.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/services/places.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/controllers/list.js', CClientScript::POS_END);

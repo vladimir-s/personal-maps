@@ -1,41 +1,41 @@
 <form name="placeForm" novalidate>
 
-    <h4 ng-show="isNew">Create place</h4>
-    <h4 ng-hide="isNew">Update place</h4>
+    <h4 ng-show="isNew">{{ 'CREATE_PLACE' | translate }}</h4>
+    <h4 ng-hide="isNew">{{ 'UPDATE_PLACE' | translate }}</h4>
 
-    <label>Title *:<br><input type="text" ng-model="place.p_title" name="pTitle" required class="span12">
-    <span class="text-error" ng-show="placeForm.$dirty && placeForm.pTitle.$error.required">This field shouldn't be empty.</span></label>
+    <label>{{ 'TITLE' | translate }} *:<br><input type="text" ng-model="place.p_title" name="pTitle" required class="span12">
+    <span class="text-error" ng-show="placeForm.$dirty && placeForm.pTitle.$error.required">{{ 'FIELD_NOT_EMPTY' | translate }}.</span></label>
 
-    <label>Description (<a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a> enabled):<br>
+    <label>{{ 'DESCRIPTION' | translate }} (<a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a> {{ 'ENABLED' | translate }}):<br>
         <textarea ng-model="place.p_description" class="span12"></textarea>
     </label>
 
-    <label for="placeLat">Latitude:</label>
+    <label for="placeLat">{{ 'LATITUDE' | translate }}:</label>
     <div class="input-append">
-        <input type="text" id="placeLat" ng-model="place.p_lat" placeholder="Click on the map" disabled>
+        <input type="text" id="placeLat" ng-model="place.p_lat" placeholder="{{ 'CLICK_ON_THE_MAP' | translate }}" disabled>
         <span class="add-on">&deg;</span>
     </div>
 
-    <label for="placeLng">Longitude:</label>
+    <label for="placeLng">{{ 'LONGITUDE' | translate }}:</label>
     <div class="input-append" class="span12">
-        <input type="text" id="placeLng" ng-model="place.p_lng" placeholder="Click on the map" disabled>
+        <input type="text" id="placeLng" ng-model="place.p_lng" placeholder="{{ 'CLICK_ON_THE_MAP' | translate }}" disabled>
         <span class="add-on">&deg;</span>
     </div>
 
     <div class="alert alert-error" ng-show="showErrors">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4>Errors:</h4>
+        <h4>{{ 'ERRORS' | translate }}:</h4>
         <ul>
             <li ng-repeat="error in errors">{{ error }}</li>
         </ul>
     </div>
 
     <button type="submit" ng-disabled="placeForm.$invalid || saving" ng-click="save()" class="btn btn-primary">
-        <span ng-show="isNew">Create</span>
-        <span ng-hide="isNew">Update</span>
+        <span ng-show="isNew">{{ 'CREATE' | translate }}</span>
+        <span ng-hide="isNew">{{ 'UPDATE' | translate }}</span>
         <span ng-show="saving"><img ng-src="images/ajax-loader.gif" alt="loader"></span>
     </button>
 
-    <a href="places/#/list" class="btn">Cancel</a>
+    <a href="places/#/list" class="btn">{{ 'CANCEL' | translate }}</a>
 
 </form>

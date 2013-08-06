@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Personal maps',
+    'language'=>'ru_ru',
 
     'aliases' => array(
         'bootstrap' => realpath(__DIR__ . '/../extensions/yiistrap'), // change this if necessary
@@ -98,6 +99,9 @@ return array(
                     'js'=>array('1.10.2/jquery.min.js'),
                 )
             ),
+        ),
+        'messages'=>array(
+            'class'=>'PhpMessageSource',
         ),
 	),
 
