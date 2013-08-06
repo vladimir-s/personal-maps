@@ -16,6 +16,8 @@ files = [
   'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js',
   'libs/angular-mocks.js',
   '../../js/ui-bootstrap-tpls-0.4.0.min.js',
+  '../../js/angular-translate.min.js',
+  'unit/js/bootstrap.js',
   '../../js/app.js',
   '../../js/controllers/*.js',
   '../../js/services/*.js',

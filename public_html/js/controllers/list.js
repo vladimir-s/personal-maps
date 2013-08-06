@@ -1,8 +1,10 @@
 'use strict';
 
 app.controller('PlacesListController'
-    , ['$scope', '$rootScope', 'Places', '$dialog'
-    , function($scope, $rootScope, Places, $dialog) {
+    , ['$scope', '$rootScope', 'Places', '$dialog', 'lang'
+    , function($scope, $rootScope, Places, $dialog, lang) {
+
+    $scope.curLang = lang;
 
     $scope.places = Places.getAll();
 

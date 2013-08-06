@@ -2,9 +2,11 @@ describe('Places List controller', function() {
     var scope, rootScope, dialog, routeParams, controller, places;
 
     beforeEach(function() {
-        module('personalmaps');
+        module('personalmaps', function($provide) {
+            $provide.value('lang', '');
+        });
 
-        inject(function($rootScope, $controller, $routeParams, $dialog) {
+        inject(function($rootScope, $controller, $routeParams, $dialog, lang) {
             rootScope = $rootScope;
             scope = $rootScope.$new();
             dialog = $dialog;

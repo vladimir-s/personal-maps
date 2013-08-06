@@ -2,9 +2,11 @@ describe('Places Form controller', function() {
     var scope, rootScope, location, routeParams, controller, places;
 
     beforeEach(function() {
-        module('personalmaps');
+        module('personalmaps', function($provide) {
+            $provide.value('lang', '');
+        });
 
-        inject(function($rootScope, $controller, $routeParams, $location) {
+        inject(function($rootScope, $controller, $routeParams, $location, lang) {
             rootScope = $rootScope;
             scope = $rootScope.$new();
             location = $location;

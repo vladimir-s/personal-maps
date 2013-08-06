@@ -27,9 +27,11 @@ describe('Places service', function() {
     };
 
     beforeEach(function() {
-        module('personalmaps');
+        module('personalmaps', function($provide) {
+            $provide.value('lang', '');
+        });
 
-        inject(function($injector) {
+        inject(function($injector, lang) {
             injector = $injector;
             $httpBackend = $injector.get('$httpBackend');
             $httpBackend.when('GET', 'api/places').respond(response);
@@ -37,6 +39,7 @@ describe('Places service', function() {
             $httpBackend.when('PUT', 'api/places/2').respond(response[1]);
             $httpBackend.when('PUT', 'api/places/5').respond(response[1]);
             $httpBackend.when('DELETE', 'api/places/2').respond('');
+            $httpBackend.when('GET', 'foo/bar.json?lang=en').respond('[]');
         });
     });
 

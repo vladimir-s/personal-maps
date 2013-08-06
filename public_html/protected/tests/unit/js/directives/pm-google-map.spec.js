@@ -1,5 +1,5 @@
 describe('Google maps directive', function() {
-    var elm, scope;
+    var elm, scope, $translate, $httpBackend;
 
     beforeEach(module('personalmaps', function ($provide) {
         var Places = {
@@ -30,10 +30,12 @@ describe('Google maps directive', function() {
             $get: function() {
                 return Places;
             }
-        })}
-    ));
+        });
+        $provide.value('lang', 'en_us');
+    }));
 
-    beforeEach(inject(function($rootScope, $compile, Places) {
+    beforeEach(inject(function($injector, $rootScope, $compile, Places) {
+
         spyOn($rootScope, '$broadcast');
 
         elm = angular.element(

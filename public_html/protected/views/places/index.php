@@ -3,6 +3,13 @@ Yii::app()->clientScript->registerScriptFile('//maps.googleapis.com/maps/api/js?
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/markdown.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile('//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/ui-bootstrap-tpls-0.4.0.min.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/angular-translate.min.js', CClientScript::POS_END);
+Yii::app()->clientScript->registerScript(
+    'langScript'
+    , 'var lang = "'.Yii::app()->getLanguage().'";'
+    , CClientScript::POS_HEAD
+);
+
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/app.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/services/places.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/controllers/list.js', CClientScript::POS_END);
@@ -10,9 +17,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/controller
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/directives/pm-google-map.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerScript(
     'requiredScript'
-    , '
-    angular.bootstrap(document, ["personalmaps"]);
-    '
+    , 'angular.bootstrap(document, ["personalmaps"]);'
     , CClientScript::POS_END
 );
 ?>
