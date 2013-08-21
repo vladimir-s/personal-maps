@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-    <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block"><?php echo Yii::t('app', 'REQUIRED_FIELDS'); ?></p>
 
     <?php echo $form->errorSummary($model); ?>
 
@@ -30,7 +30,7 @@
             <?php echo $form->dropDownListControlGroup($model, 'u_role', array('user'=>'user', 'admin'=>'admin'), array('class' => 'span5')); ?>
 
         <div class="form-actions">
-        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(
+        <?php echo TbHtml::submitButton($model->isNewRecord ? Yii::t('app', 'SAVE') : Yii::t('app', 'UPDATE'), array(
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?>

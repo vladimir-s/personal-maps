@@ -5,20 +5,20 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
+    Yii::t('app', 'USERS')=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+    Yii::t('app', 'UPDATE'),
 );
 
 $this->menu=array(
-    array('label'=>'Operations'),
-    array('label'=>'List Users', 'url'=>array('index')),
-    array('label'=>'Create Users', 'url'=>array('create')),
-    array('label'=>'View Users', 'url'=>array('view', 'id'=>$model->id)),
-    array('label'=>'Manage Users', 'url'=>array('admin')),
+    array('label'=>Yii::t('app', 'OPERATIONS')),
+    array('label'=>Yii::t('app', 'LIST_USERS'), 'url'=>array('index')),
+    array('label'=>Yii::t('app', 'CREATE_USERS'), 'url'=>array('create')),
+    array('label'=>Yii::t('app', 'VIEW_USERS'), 'url'=>array('view', 'id'=>$model->id)),
+    array('label'=>Yii::t('app', 'MANAGE_USERS'), 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Users <?php echo $model->id; ?></h1>
+    <h1><?php echo Yii::t('app', 'UPDATE_USERS'); ?> <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

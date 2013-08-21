@@ -29,12 +29,12 @@
             <span class="brand"><?php echo CHtml::encode(Yii::app()->name); ?></span>
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
-                    array('label'=>'Places', 'url'=>array('/places/index'), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Users', 'url'=>array('/users/index'), 'visible'=>Yii::app()->user->checkAccess('admin')),
-                    array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                    array('label'=>'Contact', 'url'=>array('/site/contact')),
-                    array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                    array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                    array('label'=>Yii::t('app', 'PLACES'), 'url'=>array('/places/index'), 'visible'=>!Yii::app()->user->isGuest),
+                    array('label'=>Yii::t('app', 'USERS'), 'url'=>array('/users/index'), 'visible'=>Yii::app()->user->checkAccess('admin')),
+                    array('label'=>Yii::t('app', 'ABOUT'), 'url'=>array('/site/page', 'view'=>'about')),
+                    array('label'=>Yii::t('app', 'CONTACT'), 'url'=>array('/site/contact')),
+                    array('label'=>Yii::t('app', 'LOGIN'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                    array('label'=>Yii::t('app', 'LOGOUT').' ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
                 ),
                 'activeCssClass'=>'active',
                 'htmlOptions'=>array(

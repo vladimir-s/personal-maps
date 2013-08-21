@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Personal maps',
-    'language'=>'ru_ru',
+    'language'=>'ru',
 
     'aliases' => array(
         'bootstrap' => realpath(__DIR__ . '/../extensions/yiistrap'), // change this if necessary

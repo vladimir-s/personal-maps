@@ -69,12 +69,12 @@ class Users extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'u_name' => 'Name',
-			'u_email' => 'Email',
-			'u_pass' => 'Password',
-            'u_pass_repeat' => 'Repeat password',
-            'u_role' => 'Role',
+			'id' => Yii::t('app', 'ID'),
+			'u_name' => Yii::t('app', 'NAME'),
+			'u_email' => Yii::t('app', 'EMAIL'),
+			'u_pass' => Yii::t('app', 'PASSWORD'),
+            'u_pass_repeat' => Yii::t('app', 'REPEAT_PASSWORD'),
+            'u_role' => Yii::t('app', 'ROLE'),
 		);
 	}
 

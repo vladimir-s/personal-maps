@@ -8,5 +8,7 @@ $this->breadcrumbs=array(
 ?>
 <h1>About</h1>
 
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<p>Personal maps – is the demonstration application, which aim is to show usage of Yii and AngularJS frameworks.</p>
+<p>You can download the source code from <a href="https://github.com/vladimir-s/personal-maps">GihHub</a>.</p>
+<p>Articles about the application are published in <a href="http://www.simplecoding.org/personal-maps.html">my blog</a> (Russian).</p>
+
