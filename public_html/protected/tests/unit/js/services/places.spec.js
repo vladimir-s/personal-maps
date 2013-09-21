@@ -3,17 +3,19 @@ describe('Places service', function() {
 
     var response = [
         {
-            'id': '1',
+            'id': 1,
             'p_title': 'title 1',
             'p_description': 'desc 1',
-            'p_coords': '0, 0',
+            "p_lng": 50.4,
+            "p_lat": 30.76,
             'p_user': 1
         },
         {
-            'id': '2',
+            'id': 2,
             'p_title': 'title 2',
             'p_description': 'desc 2',
-            'p_coords': '0, 0',
+            "p_lng": 50.4,
+            "p_lat": 30.76,
             'p_user': 2
         }
     ];
@@ -22,7 +24,8 @@ describe('Places service', function() {
         'id': '3',
         'p_title': 'title 3',
         'p_description': 'desc 3',
-        'p_coords': '0, 0',
+        'p_lng': '50.4',
+        'p_lat': '30.76',
         'p_user': 1
     };
 
