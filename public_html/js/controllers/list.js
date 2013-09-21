@@ -22,7 +22,7 @@ app.controller('PlacesListController'
     $scope.confirm = function(place) {
         var title = 'Confirm';
         var msg = 'Do you really want to delete this place?';
-        var btns = [{result:'no', label: 'No'}, {result:'yes', label: 'Yes', cssClass: 'btn-primary'}];
+        var btns = [{result:'no', label: 'No'}, {result:'yes', label: 'Yes', cssClass: 'btn-danger'}];
 
         $dialog.messageBox(title, msg, btns)
             .open()

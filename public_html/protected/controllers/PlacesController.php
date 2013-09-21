@@ -23,7 +23,6 @@ class PlacesController extends RestController
 
     public function actionView($id)
     {
-        // TODO: Implement actionView() method.
     }
 
     public function actionCreate()
@@ -34,10 +33,7 @@ class PlacesController extends RestController
         }
         $data = CJSON::decode(file_get_contents('php://input'));
         $place = new Places();
-        $place->p_title = $data['p_title'];
-        $place->p_description = isset($data['p_description']) ? $data['p_description'] : '';
-        $place->p_lng = $data['p_lng'];
-        $place->p_lat = $data['p_lat'];
+        $place->attributes = $data;
         if ($place->save()) {
             $this->_sendResponse(200, CJSON::encode($place));
         }

@@ -111,6 +111,9 @@ class Places extends CActiveRecord
 
     public function beforeSave() {
         $this->p_user_id = Yii::app()->user->getId();
+        if (null == $this->p_description) {
+            $this->p_description = '';
+        }
         return parent::beforeSave();
     }
 }
