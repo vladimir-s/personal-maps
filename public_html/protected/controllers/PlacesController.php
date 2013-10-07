@@ -56,10 +56,7 @@ class PlacesController extends RestController
         if (null === $place) {
             $this->_sendResponse(404, CJSON::encode(array('message'=>'Could not find place with id = '.$id)));
         }
-        $place->p_title = $data['p_title'];
-        $place->p_description = isset($data['p_description']) ? $data['p_description'] : '';
-        $place->p_lng = $data['p_lng'];
-        $place->p_lat = $data['p_lat'];
+        $place->attributes = $data;
         if ($place->save()) {
             $this->_sendResponse(200, CJSON::encode($place));
         }
