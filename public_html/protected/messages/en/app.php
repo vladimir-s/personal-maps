@@ -39,4 +39,5 @@ return array(
     'AT_THE_BEGINNING' => 'at the beginning of each of your search values to specify how the comparison should be done',
     'SEARCH' => 'Search',
     'ADVANCED_SEARCH' => 'Advanced Search',
+    'VIEW_USERS' => 'View User',
 );

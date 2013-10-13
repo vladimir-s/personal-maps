@@ -10,7 +10,7 @@ class UsersController extends Controller
      */
     public function actionView($id)
     {
-        if (Yii::app()->user->checkAccess('admin')) {
+        if (Yii::app()->user->checkAccess('viewUser')) {
             $this->render('view', array(
                 'model' => $this->loadModel($id),
             ));
@@ -26,7 +26,7 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        if (!Yii::app()->user->checkAccess('admin')) {
+        if (!Yii::app()->user->checkAccess('addUser')) {
             throw new CHttpException(403);
         }
 
@@ -53,7 +53,7 @@ class UsersController extends Controller
      */
     public function actionUpdate($id)
     {
-        if (!Yii::app()->user->checkAccess('admin')) {
+        if (!Yii::app()->user->checkAccess('updateUser')) {
             throw new CHttpException(403);
         }
 
@@ -80,7 +80,7 @@ class UsersController extends Controller
      */
     public function actionDelete($id)
     {
-        if (!Yii::app()->user->checkAccess('admin')) {
+        if (!Yii::app()->user->checkAccess('deleteUser')) {
             throw new CHttpException(403);
         }
 
@@ -100,7 +100,7 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
-        if (!Yii::app()->user->checkAccess('admin')) {
+        if (!Yii::app()->user->checkAccess('viewUsers')) {
             throw new CHttpException(403);
         }
 
@@ -115,7 +115,7 @@ class UsersController extends Controller
      */
     public function actionAdmin()
     {
-        if (!Yii::app()->user->checkAccess('admin')) {
+        if (!Yii::app()->user->checkAccess('viewUsers')) {
             throw new CHttpException(403);
         }
 
