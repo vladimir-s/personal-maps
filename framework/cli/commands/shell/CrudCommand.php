@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -81,7 +81,7 @@ EOD;
 
 	/**
 	 * Execute the action.
-	 * @param array command line parameters specific for this command
+	 * @param array $args command line parameters specific for this command
 	 * @return integer|null non zero application exit code for help or null on success
 	 */
 	public function run($args)
@@ -116,7 +116,7 @@ EOD;
 			else
 			{
 				$last=substr($controllerID,$pos+1);
-				$last[0]=strtolower($last);
+				$last[0]=strtolower($last[0]);
 				$pos2=strpos($controllerID,'/');
 				$first=substr($controllerID,0,$pos2);
 				$middle=$pos===$pos2?'':substr($controllerID,$pos2+1,$pos-$pos2);
@@ -148,7 +148,7 @@ EOD;
 
 		$viewPath=$module->viewPath.DIRECTORY_SEPARATOR.str_replace('.',DIRECTORY_SEPARATOR,$controllerID);
 		$fixtureName=$this->pluralize($modelClass);
-		$fixtureName[0]=strtolower($fixtureName);
+		$fixtureName[0]=strtolower($fixtureName[0]);
 		$list=array(
 			basename($controllerFile)=>array(
 				'source'=>$templatePath.'/controller.php',
